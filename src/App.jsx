@@ -1,13 +1,27 @@
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Box } from '@mui/material';
+import {
+  Feed,
+  Navbar,
+  SearchFeed,
+  VideoDetail,
+  ChannelDetail,
+} from './components';
 
-function App() {
-  const [count, setCount] = useState(0);
-
+const App = () => {
   return (
-    <>
-      <h1>App</h1>
-    </>
+    <BrowserRouter>
+      <Box sx={{ backgroundColor: '#000' }}>
+        <Navbar />
+        <Routes>
+          <Route path='/' exact element={<Feed />} />
+          <Route path='/video/:id' element={<VideoDetail />} />
+          <Route path='/channel/:id' element={<ChannelDetail />} />
+          <Route path='/seach/:searchTerm' element={<SearchFeed />} />
+        </Routes>
+      </Box>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
